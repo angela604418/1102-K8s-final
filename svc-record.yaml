@@ -7,8 +7,7 @@ spec:
   externalIPs:
   - 10.22.23.169
   ports:
-  - port: 80
-    targetPort: 80
-    nodePort: 30000 
+  - port: 5000
+    targetPort: 5000
   selector:
     app: records

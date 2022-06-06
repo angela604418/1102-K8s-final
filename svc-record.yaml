@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-record
+spec:
+  type: LoadBalancer
+  externalIPs:
+  - 10.22.23.169
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000 
+  selector:
+    app: records

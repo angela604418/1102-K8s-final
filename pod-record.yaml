@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-record
+  labels:
+    app: records
+spec:
+  containers:
+    - name: record-player
+      image: phoebe61g/record_player
+      command: ["/bin/sh","-c"]
+      args: ["cd /flask; export FLASK_APP=record_player.py; flask run -h 0.0.0.0 -p 80"]
+      volumeMounts:
+      - name: record-data
+        mountPath: /flask/static
+      ports:
+      - containerPort: 80
+  volumes:
+  - name: record-data
+    persistentVolumeClaim:
+      claimName: pvc-record

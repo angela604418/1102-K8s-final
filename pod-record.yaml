@@ -9,12 +9,12 @@ spec:
     - name: record-player
       image: phoebe61g/record_player
       command: ["/bin/sh","-c"]
-      args: ["cd /flask; export FLASK_APP=record_player.py; flask run -h 0.0.0.0 -p 80"]
+      args: ["cd /flask; export FLASK_APP=record_player.py; flask run -h 0.0.0.0"]
       volumeMounts:
       - name: record-data
         mountPath: /flask/static
       ports:
-      - containerPort: 80
+      - containerPort: 5000
   volumes:
   - name: record-data
     persistentVolumeClaim:
